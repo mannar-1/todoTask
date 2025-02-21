@@ -27,10 +27,8 @@ export const styles= StyleSheet.create({
         flexShrink: 1,
     },
     cardicons:{
-        flexDirection:"row",
-        alignItems:"flex-start",
-        gap:20,
-        marginLeft:270,
-        padding:5,
+        flexDirection:"row-reverse",
+        padding:10,
+        gap:5,
     },
 })

@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import Edit from '../../../assets/Edit';
 import Delete from '../../../assets/Delete';
 import { useDispatch } from 'react-redux';
@@ -19,33 +19,25 @@ const ActionButton = ({ type,id }:ActionButonProps) => {
         dispatch(removeTask({id}));
     }
   };
-  const renderIcon = () => {
-    switch (type) {
-      case 'Edit':
-        return <Edit />;
-      case 'Delete':
-        return <Delete />;
-      default:
-        return null;
-    }
-  };
-
+console.log("here for",type);
   return (
-    <TouchableOpacity onPress={()=>handleAction(type)}>
-      <View style={styles.iconContainer}>{renderIcon()}</View>
-    </TouchableOpacity>
+    <TouchableOpacity onPress={() => handleAction(type)}>
+    <View style={styles.iconContainer}>
+      {type === 'Edit' ? <Edit /> : <Delete />}
+    </View>
+  </TouchableOpacity>
   );
 };
 
-const styles = {
+const styles = StyleSheet.create({
   iconContainer: {
     width: 40,
     height: 40,
     borderRadius: 20,
     backgroundColor: 'rgba(220, 223, 255, 0.5)',
-    justifyContent: 'center' as const ,
-    alignItems: 'center' as const ,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-};
+});
 
 export default ActionButton;

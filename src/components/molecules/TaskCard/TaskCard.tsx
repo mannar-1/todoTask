@@ -33,8 +33,8 @@ const TaskCard = ({item}:TaskCardProps) => {
      </View>
     </Card.Content>
     <View style={styles.cardicons}>
-    <ActionButon type='Edit' id={item.id}/>
     <ActionButon type='Delete' id={item.id}/>
+    <ActionButon type='Edit' id={item.id}/>
     </View>
   </Card>
     </View>
