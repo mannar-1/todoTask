@@ -5,19 +5,32 @@ import { styles } from './CheckboxWithText.styles';
 
 interface CheckboxWithTextProps{
     text:string,
-    priority:string,
-    setPriority: (prio:string) => void,
+    priority?:string,
+    setPriority?: (prio:string) => void,
     checked:boolean,
-    setCurrent:(current:string) => void ,
-    current:string,
+    setCurrent?:(current:string) => void ,
+    current?:string,
+    onPress?: () => void;  
+
 }
-const CheckboxWithText = ({text,setPriority,checked,setCurrent}:CheckboxWithTextProps) => {
+const CheckboxWithText = ({text,setPriority,checked,setCurrent,onPress}:CheckboxWithTextProps) => {
+    const handlePress = () => {
+        if (setPriority) {
+            setPriority(text);
+        }
+        if (setCurrent) {
+            setCurrent(text);
+        }
+         if (onPress) {
+            onPress();
+        }
+    };
     return (
         <View style={styles.checkboxcontainer}>
             <View style={styles.checkbox}>
             <Checkbox
                 status={checked ? 'checked' : 'unchecked'}
-                onPress={() => { setPriority(text); setCurrent(text);}}
+                onPress={handlePress}
             />
             </View>
             <Text style={styles.checkboxtext}>{text}</Text>

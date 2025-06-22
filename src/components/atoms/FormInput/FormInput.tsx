@@ -4,13 +4,15 @@ import { styles } from "./FormInput.styles";
 
 interface FormInputProps{
     setTask : (task: string)=> void,
+    value?: string,  
+
 }
-const FormInput =  ({setTask}:FormInputProps)=>{
+const FormInput =  ({setTask,value}:FormInputProps)=>{
     return(
         <View style={styles.inputcomponent}>
             <Text style={styles.label}>Task name</Text>
         <View style={styles.input}>
-            <TextInput style={styles.inputbox} multiline={true} onChangeText={setTask} />
+            <TextInput style={styles.inputbox} multiline={true} onChangeText={setTask} value={value} />
         </View>
         </View>
     );

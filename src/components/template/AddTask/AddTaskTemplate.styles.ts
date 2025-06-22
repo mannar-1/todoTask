@@ -24,4 +24,19 @@ export const styles = StyleSheet.create({
         marginBottom: 50,
         marginTop: 50,
     },
+    addlocation: {
+        marginLeft:20,
+        marginBottom:-20,
+        justifyContent: 'center',
+    },
+      loadingContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+  },
+  loadingText: {
+    marginLeft: 10,
+    color: '#666',
+  },
 });

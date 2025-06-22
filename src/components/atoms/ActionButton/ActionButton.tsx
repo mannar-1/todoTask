@@ -4,6 +4,7 @@ import Edit from '../../../assets/Edit';
 import Delete from '../../../assets/Delete';
 import { useDispatch } from 'react-redux';
 import { removeTask } from '../../../store/TaskSlice';
+import { useNavigation } from '@react-navigation/native';
 
 type ActionType= 'Edit' | 'Delete';
 
@@ -13,10 +14,13 @@ interface ActionButonProps{
 }
 const ActionButton = ({ type,id }:ActionButonProps) => {
   const dispatch = useDispatch();
-
+  const navigation = useNavigation() as any; // Type assertion to bypass TS error
   const handleAction = (type:string)=>{
     if ( type === "Delete" ){
         dispatch(removeTask({id}));
+    }
+    else{
+     navigation.navigate('AddTask', { taskId: id });
     }
   };
 console.log("here for",type);

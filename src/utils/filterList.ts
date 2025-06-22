@@ -8,7 +8,6 @@ export const filterList = (filter:string,data:Task[])=>{
         return data.filter((item)=>item.status === "todo");
     }
     else if (filter === "all" ){
-        console.log("i am in this block with ,",data);
         return data;
     }
 };

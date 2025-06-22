@@ -5,6 +5,11 @@ import { Task } from '../types/Task';
 interface TaskArray{
     tasks: Task[]
     taskid:number,
+    image?: string,
+    location?: {
+        latitude: number,
+        longitude: number
+    }
 }
 
 const initialState:TaskArray = {
@@ -38,4 +43,5 @@ const TaskSlice = createSlice({
 
 export default  TaskSlice.reducer;
 export const {addTask,removeTask,editTask} = TaskSlice.actions;
+
 

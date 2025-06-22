@@ -5,10 +5,12 @@ import TaskActive from "../assets/TaskActive";
 import TaskDefault from "../assets/TaskDefault";
 import MapActive from "../assets/MapActive";
 import MapDefault from "../assets/MapDefault";
+import MapScreen from "../screens/MapScreen";
+import GeneratorDefault from "../assets/GeneratorDefault";
+import Generator from "../screens/Generator";
 
 
 const Tab = createBottomTabNavigator();
-const tab2= ()=>{return <View><Text>hi this is dummy tab</Text></View>};
 const TabNavigation = () => {
    return (
     <Tab.Navigator
@@ -21,12 +23,16 @@ const TabNavigation = () => {
           } else if (route.name === "map") {
             iconName = focused ? <MapActive /> : <MapDefault />;
           }
+          else{
+            iconName= focused ? <GeneratorDefault/> : <GeneratorDefault />;
+          }
           return iconName;
         },
     })}
     >
         <Tab.Screen name="Tasks" component={StackNavigation} />
-        <Tab.Screen name="map" component={tab2} />
+        <Tab.Screen name="map" component={MapScreen} />
+        <Tab.Screen name="Generator" component={Generator} />
     </Tab.Navigator>
    )
 };

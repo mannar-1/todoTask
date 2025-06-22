@@ -12,6 +12,7 @@ interface PriorirtyPanelProps {
    setCurrent:(current:string)=>void,
 }
 const PriorityPanel = ({ color, text, priority, setPriority,current,setCurrent }: PriorirtyPanelProps) => {
+   console.log(current, "checking current and text");
    return (
       <View style={styles.panel}>
          <View style={[styles.indicator, { backgroundColor: color }]} />
