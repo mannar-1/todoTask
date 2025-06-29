@@ -10,31 +10,34 @@ import { editTask } from '../../../store/TaskSlice';
 
 interface TaskCardProps{
   item:Task
+  noedit?:boolean
+  nocheckbox?:boolean
 }
-const TaskCard = ({item}:TaskCardProps) => {
+const TaskCard = ({item,nocheckbox,noedit}:TaskCardProps) => {
     const [checked, setChecked] = React.useState(item.status === "done" ? true : false);
     const dispatch = useDispatch();
+    console.log(nocheckbox,noedit);
   return(
 
     <View>
         <Card style={styles.card}>
     <Card.Content style={styles.cardcontent}>
       <View style={styles.indicator} />
-    <Checkbox
+    {!nocheckbox && <Checkbox
              status={checked ? 'checked' : 'unchecked'}
              onPress={() => {
                setChecked(!checked);
                dispatch(editTask({...item,status: checked ? 'todo' : 'done'}));
              }}
              color="rgb(104, 113, 238)"
-     />
+     />}
      <View style={styles.cardtext}>
      <CustomText type="headlineSmall" text={item.task} color="black" strike={checked} />
      </View>
     </Card.Content>
     <View style={styles.cardicons}>
     <ActionButon type='Delete' id={item.id}/>
-    <ActionButon type='Edit' id={item.id}/>
+    {!noedit && <ActionButon type='Edit' id={item.id}/>}
     </View>
   </Card>
     </View>

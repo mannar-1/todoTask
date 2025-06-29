@@ -8,6 +8,7 @@ import MapDefault from "../assets/MapDefault";
 import MapScreen from "../screens/MapScreen";
 import GeneratorDefault from "../assets/GeneratorDefault";
 import Generator from "../screens/Generator";
+import GeneratorStack from "./GeneratorStackNavigator";
 
 
 const Tab = createBottomTabNavigator();
@@ -32,7 +33,7 @@ const TabNavigation = () => {
     >
         <Tab.Screen name="Tasks" component={StackNavigation} />
         <Tab.Screen name="map" component={MapScreen} />
-        <Tab.Screen name="Generator" component={Generator} />
+        <Tab.Screen name="Generator" component={GeneratorStack} />
     </Tab.Navigator>
    )
 };

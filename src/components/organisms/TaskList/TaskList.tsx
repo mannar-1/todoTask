@@ -4,15 +4,23 @@ import { Task } from "../../../types/Task";
 import TaskCard from "../../molecules/TaskCard/TaskCard";
 
 interface Tasklistprops{
-    tasks:Task[] | undefined
+    tasks:Task[] | undefined,
+    noedit?:boolean
+    nocheckbox?:boolean
 }
-const TaskList = ({tasks}:Tasklistprops) =>{
+const TaskList = ({tasks,nocheckbox,noedit}:Tasklistprops) =>{
         return(
-            <View>
+            <View style={{flex:1,width:'100%'}}>
                 <FlatList
                   data={tasks}
                   keyExtractor={(item)=>item.id.toString()}
-                  renderItem={(item)=><TaskCard {...item}/>}
+                  renderItem={({ item }) => (
+                    <TaskCard
+                      item={item}
+                      nocheckbox={nocheckbox}
+                      noedit={noedit}
+                    />
+                  )}
                   />
             </View>
         );
